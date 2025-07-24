@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Barcode Labels</title>
+    <style>
+        .label {
+            border: 1px solid #000;
+            padding: 10px;
+            margin: 10px;
+            width: 200px;
+            display: inline-block;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        img { width: 100%; }
+        .price { font-weight: bold; font-size: 18px; margin-top: 5px; }
+    </style>
+</head>
+<body>
+    <% items.forEach(item => { %>
+        <div class="label">
+            <strong>KCC</strong><br>
+            <small><%= item.supp %><br><%= item.stock %></small><br><br>
+            <strong><%= item.sku %></strong><br>
+            <img src="/<%= item.barcodeFile %>"><br>
+            <small><%= item.barcode %></small><br>
+            <strong><%= item.description %></strong><br>
+            <div class="price">P <%= item.srp.toLocaleString(undefined, { minimumFractionDigits: 2 }) %></div>
+        </div>
+    <% }); %>
+</body>
+</html>
